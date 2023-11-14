@@ -1,0 +1,34 @@
+{   
+    "manifest_version": 3,
+    "name": "Power search",
+    "version": "0.2.0",
+    
+    "description": "Chrome extention for power search",
+    "icons": {
+
+    },
+
+    "permissions": [
+        "scripting", 
+        "history",
+        "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "exclude_globs":[
+                "*://www.google.com/*",
+                "*://www.google.ca/*",
+                "*://duckduckgo.com/*"
+            ],
+            "css": ["lib/semantic.min.css", "content.css"],
+            "js": ["lib/jquery.min.js", "content.js"]
+        }
+    ],
+
+    "options_page": "options.html",
+
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
