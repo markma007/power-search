@@ -91,6 +91,21 @@ function search(engine) {
   window.open(SearchConfig[engine]["searchUrl"](q), "_blank");
 }
 
+
+function showSearchSection2() {
+        $("#power-search-section2").removeClass("hide");
+        $("#power-search-section2").addClass("show");
+        $("#power-search-section2").css('z-index', 20000)
+        $(searchInputSelector).focus();
+}
+
+function hideSearchSection2() {
+        $("#power-search-section2").removeClass("show");
+        $("#power-search-section2").addClass("hide");
+        $(searchInputSelector).blur();
+}
+
+
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
@@ -128,24 +143,26 @@ $(document).ready(()=>{
         $(event.target).blur();
       });
 
-      $(searchBlockSelector).on("mouseenter", ()=>{
-        $("#power-search-section2").removeClass("hide");
-        $("#power-search-section2").addClass("show");
-        $("#power-search-section2").css('z-index', 20000)
-        $(searchInputSelector).focus();
-      });
+      $(searchBlockSelector).on("mouseenter", showSearchSection2);
 
-      $("#power-search-section2").on("click", ()=>{
-        $("#power-search-section2").removeClass("show");
-        $("#power-search-section2").addClass("hide");
-        $(searchInputSelector).blur();
-      });
+      $("#power-search-section2").on("click", hideSearchSection2);
 
-      $(".wrapper").on("click", (event)=>{
-        event.stopPropagation();
-      })
+      $(".wrapper").on("click", (event)=>{ event.stopPropagation(); })
+	  
+
+
+
 
   })
+
+  /////////////////////////////////////////////////////
+  // on-message from background or popup
+  chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      if (request.command === "start-window") {
+		showSearchSection2(); sendResponse({message: "done"});
+	  }
+  });
 
 }) // $.ready  
 
