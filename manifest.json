@@ -7,11 +7,16 @@
     "icons": {
 
     },
+	
+	"background": {
+        "service_worker": "service-worker.js"
+    },
 
     "permissions": [
         "scripting", 
         "history",
-        "storage"
+        "storage",
+		"tabs"
     ],
     "content_scripts": [
         {
@@ -30,5 +35,15 @@
 
     "action": {
         "default_popup": "popup.html"
-    }
+    },
+	
+	"commands": {
+		"start-search": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+F"
+			},
+			"description": "open search window"
+			
+		}
+	}
 }
