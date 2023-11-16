@@ -38,11 +38,11 @@
     },
 	
 	"commands": {
-		"start-search": {
+		"start-window": {
 			"suggested_key": {
 				"default": "Ctrl+Shift+F"
 			},
-			"description": "open search window"
+			"description": "start search section 2 window"
 			
 		}
 	}
