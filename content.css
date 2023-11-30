@@ -48,8 +48,8 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    right: 0;
-    top: calc(50vh - 50px);
+    right: -50px;
+    top: -50px;
     width: 100px;
     height: 100px;
     border-radius: 50%;
